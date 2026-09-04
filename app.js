@@ -31,7 +31,7 @@
   }
   function renderQuestion(){
     if(index>=questions.length){finish(false);return}
-    const q=questions[index];$('quizName').textContent=currentName;$('progress').textContent=`${index+1}/${questions.length} • Верно: ${correct}`;$('abbrev').textContent=q.abbrev;$('answer').value='';$('answerArea').classList.add('hidden');$('answerArea').innerHTML='';$('revealBtn').disabled=false;$('answer').focus();
+    const q=questions[index];$('quizName').textContent=currentName;$('progress').textContent=`${index+1}/${questions.length} • Верно: ${correct}`;$('abbrev').textContent=q.abbrev;$('answer').value='';$('answerArea').classList.add('hidden');$('answerArea').innerHTML='';$('revealBtn').disabled=false;
   }
   function reveal(){
     const q=questions[index];const area=$('answerArea');area.classList.remove('hidden');area.innerHTML=`<div class="your">Ваш ответ: ${escapeHtml($('answer').value.trim()||'(пусто)')}</div><div class="correct">Правильно: ${escapeHtml(q.full)}</div><div class="answer-buttons"><button class="btn correct-btn" id="yesBtn">✓ Верно</button><button class="btn wrong-btn" id="noBtn">✕ Неверно</button></div>`;$('revealBtn').disabled=true;$('yesBtn').onclick=()=>mark(true);$('noBtn').onclick=()=>mark(false);area.scrollIntoView({behavior:'smooth',block:'nearest'});
