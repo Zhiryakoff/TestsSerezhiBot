@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Военные сокращения">
+  <title>Военные сокращения</title>
+  <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+  <script src="telegram.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <button id="homeBtn" class="icon-btn hidden" aria-label="Главное меню">⌂</button>
+      <div class="brand">Военные сокращения</div>
+      <div id="topTimer" class="timer hidden">00:00</div>
+    </header>
+
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+        <h1>Тест по сокращениям</h1>
+        <p>Выберите раздел. На iPhone интерфейс автоматически подстраивается под экран.</p>
+      </div>
+      <div id="sectionButtons" class="button-list"></div>
+      <button id="examBtn" class="btn btn-exam">Экзамен</button>
+      <div id="dbInfo" class="muted"></div>
+    </section>
+
+    <section id="modeScreen" class="screen">
+      <div class="hero">
+        <div id="modeTitle" class="eyebrow"></div>
+        <h1>Выберите режим</h1>
+      </div>
+      <div class="button-list">
+        <button id="normalBtn" class="btn btn-primary">Обычный тест</button>
+        <button id="allBtn" class="btn btn-success">Все сокращения с этого раздела</button>
+        <button id="modeHomeBtn" class="btn btn-secondary">Главное меню</button>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="screen">
+      <div class="quiz-meta">
+        <span id="quizName"></span>
+        <span id="progress"></span>
+      </div>
+      <div class="question-card">
+        <div class="question-label">Расшифруйте сокращение</div>
+        <div id="abbrev" class="abbrev"></div>
+      </div>
+      <input id="answer" class="answer" type="text" autocomplete="off" autocapitalize="sentences" placeholder="Введите расшифровку…">
+      <button id="revealBtn" class="btn btn-primary">Показать ответ</button>
+      <div id="answerArea" class="answer-area hidden"></div>
+      <button id="finishBtn" class="btn btn-danger">Завершить тест</button>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="result-card">
+        <div class="eyebrow">Результат</div>
+        <h1 id="resultScore"></h1>
+        <div id="resultTime" class="result-time"></div>
+        <div id="resultStatus" class="muted"></div>
+      </div>
+      <div id="wrongBox" class="wrong-box hidden"></div>
+      <div class="result-actions">
+        <button id="errorsBtn" class="btn btn-warning hidden">Работа над ошибками</button>
+        <button id="retryBtn" class="btn btn-primary">Пройти заново</button>
+        <button id="resultHomeBtn" class="btn btn-secondary">Главное меню</button>
+      </div>
+    </section>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
