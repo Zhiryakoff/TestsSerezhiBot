@@ -23,12 +23,30 @@
 
     <section id="homeScreen" class="screen active">
       <div class="hero">
-        <h1>Тест по сокращениям</h1>
-        <p>Выберите раздел. На iPhone интерфейс автоматически подстраивается под экран.</p>
+        <h1>Военные тесты</h1>
+        <p>Выберите, с чем хотите работать: сокращения или обозначения на картинках.</p>
       </div>
-      <div id="sectionButtons" class="button-list"></div>
-      <button id="examBtn" class="btn btn-exam">Экзамен</button>
-      <div id="dbInfo" class="muted"></div>
+      <div class="button-list">
+        <button id="abbrBtn" class="btn btn-primary">Тест по Сокращениям</button>
+        <button id="pictureBtn" class="btn btn-picture">Тест по картинкам</button>
+      </div>
+    </section>
+
+    <section id="categoryScreen" class="screen">
+      <div class="hero">
+        <div class="eyebrow">Раздел</div>
+        <h1 id="categoryTitle"></h1>
+      </div>
+      <div id="abbrCategory">
+        <div id="categoryButtons" class="button-list"></div>
+        <button id="examBtn" class="btn btn-exam">Экзамен</button>
+        <div id="categoryInfo" class="muted"></div>
+      </div>
+      <div id="pictureCategory" class="hidden">
+        <div id="pictureButtons" class="button-list"></div>
+        <div id="pictureInfo" class="muted"></div>
+      </div>
+      <button id="categoryHomeBtn" class="btn btn-secondary category-home">Главное меню</button>
     </section>
 
     <section id="modeScreen" class="screen">
@@ -39,7 +57,7 @@
       <div class="button-list">
         <button id="normalBtn" class="btn btn-primary">Обычный тест</button>
         <button id="allBtn" class="btn btn-success">Все сокращения с этого раздела</button>
-        <button id="modeHomeBtn" class="btn btn-secondary">Главное меню</button>
+        <button id="modeHomeBtn" class="btn btn-secondary">Назад</button>
       </div>
     </section>
 
@@ -48,8 +66,8 @@
         <span id="quizName"></span>
         <span id="progress"></span>
       </div>
-      <div class="question-card">
-        <div class="question-label">Расшифруйте сокращение</div>
+      <div id="questionCard" class="question-card">
+        <div id="questionLabel" class="question-label">Расшифруйте сокращение</div>
         <div id="abbrev" class="abbrev"></div>
       </div>
       <input id="answer" class="answer" type="text" autocomplete="off" autocapitalize="sentences" placeholder="Введите расшифровку…">
@@ -74,6 +92,7 @@
     </section>
   </main>
   <script src="data.js"></script>
+  <script src="picture_data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
