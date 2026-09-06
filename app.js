@@ -87,9 +87,9 @@
   function reveal(){
     const q=questions[index];const area=$('answerArea');area.classList.remove('hidden');
     if(currentType==='picture'){
-      area.innerHTML=`<div class="your">Ваш ответ: ${escapeHtml($('answer').value.trim()||'(пусто)')}</div><div class="correct-label">Правильная расшифровка:</div><div class="picture-answer-text correct">${escapeHtml(q.answerText)}</div><div class="answer-buttons"><button class="btn correct-btn" id="yesBtn">✓ Верно</button><button class="btn wrong-btn" id="noBtn">✕ Неверно</button></div>`;
+      area.innerHTML=`<div class="your">Ваш ответ: ${escapeHtml($('answer').value.trim()||'(пусто)')}</div><div class="correct-label">Правильная расшифровка:</div><div class="picture-answer-text correct">${escapeHtml(q.answerText)}</div><div class="answer-buttons"><button class="btn correct-btn" id="yesBtn"><span class="btn-icon">✓</span>Верно</button><button class="btn wrong-btn" id="noBtn"><span class="btn-icon">✕</span>Неверно</button></div>`;
     }else{
-      area.innerHTML=`<div class="your">Ваш ответ: ${escapeHtml($('answer').value.trim()||'(пусто)')}</div><div class="correct">Правильно: ${escapeHtml(q.full)}</div><div class="answer-buttons"><button class="btn correct-btn" id="yesBtn">✓ Верно</button><button class="btn wrong-btn" id="noBtn">✕ Неверно</button></div>`;
+      area.innerHTML=`<div class="your">Ваш ответ: ${escapeHtml($('answer').value.trim()||'(пусто)')}</div><div class="correct">Правильно: ${escapeHtml(q.full)}</div><div class="answer-buttons"><button class="btn correct-btn" id="yesBtn"><span class="btn-icon">✓</span>Верно</button><button class="btn wrong-btn" id="noBtn"><span class="btn-icon">✕</span>Неверно</button></div>`;
     }
     $('revealBtn').disabled=true;$('yesBtn').onclick=()=>mark(true);$('noBtn').onclick=()=>mark(false);area.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
@@ -133,5 +133,16 @@
   };
   $('errorsBtn').onclick=()=>currentType==='picture'?startPicture(currentKey,'Работа над ошибками',wrong):start(currentKey,'Работа над ошибками',false,wrong);
   show('homeScreen');
-  if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+    // Auto-reload once when a new service worker takes control, so updates
+    // (design/text changes) show up immediately instead of staying cached
+    // in the Telegram in-app browser.
+    let refreshed=false;
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{
+      if(refreshed) return;
+      refreshed=true;
+      window.location.reload();
+    });
+  }
 })();
