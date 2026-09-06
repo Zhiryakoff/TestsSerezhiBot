@@ -73,12 +73,12 @@ img{max-width:100%;height:auto}
 .answer-buttons .btn{min-height:50px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px}
 .btn-icon{font-size:1.35em;font-weight:900;line-height:1;display:inline-block}
 
-/* The ✕ glyph renders thin/hairline in most fonts and barely responds to
-   font-weight. Draw a real bold cross out of two bars instead, so it
-   matches the weight of the ✓ checkmark. */
-.wrong-btn .btn-icon{position:relative;width:0.85em;height:0.85em;color:transparent;font-size:1.35em;vertical-align:middle}
+/* The ✕ glyph renders as a thin hairline in most fonts and barely reacts
+   to font-weight — build a real bold cross out of two solid bars instead
+   (fixed px sizing so it can't round down to a hairline on any device). */
+.wrong-btn .btn-icon{position:relative;width:20px;height:20px;color:transparent;font-size:0;vertical-align:middle;flex:none}
 .wrong-btn .btn-icon::before,
-.wrong-btn .btn-icon::after{content:'';position:absolute;top:50%;left:50%;width:100%;height:18%;background:#ff9d9d;border-radius:3px}
+.wrong-btn .btn-icon::after{content:'';position:absolute;top:50%;left:50%;width:22px;height:4px;background:#ff9d9d;border-radius:2px}
 .wrong-btn .btn-icon::before{transform:translate(-50%,-50%) rotate(45deg)}
 .wrong-btn .btn-icon::after{transform:translate(-50%,-50%) rotate(-45deg)}
 
@@ -120,10 +120,10 @@ img{max-width:100%;height:auto}
 }
 
 .category-home{width:min(100%,720px);margin:14px auto 0}
-.picture-card{padding:clamp(18px,5vh,40px) 14px}
-.quiz-picture{display:block;width:auto;max-width:100%;max-height:42vh;height:auto;margin:18px auto 0;object-fit:contain;border-radius:12px;border:1px solid var(--panel-border)}
+.picture-card{padding:clamp(12px,3vh,28px) 10px}
+.quiz-picture{display:block;width:100%;max-width:100%;max-height:60vh;height:auto;margin:14px auto 0;object-fit:contain;border-radius:12px;border:1px solid var(--panel-border)}
 .correct-label{color:var(--muted);font-size:13px;font-weight:800;margin-bottom:10px}
-.answer-picture{display:block;width:auto;max-width:100%;max-height:30vh;height:auto;margin:4px auto 8px;border-radius:10px;border:1px solid var(--panel-border)}
+.answer-picture{display:block;width:100%;max-width:100%;max-height:42vh;height:auto;margin:4px auto 8px;border-radius:10px;border:1px solid var(--panel-border)}
 .picture-wrong-item>img{display:block;max-width:100%;max-height:150px;width:auto;height:auto;margin:10px 0;border-radius:8px;border:1px solid var(--panel-border)}
 .wrong-answer{margin-top:8px;color:var(--muted);font-size:13px;font-weight:700}
 .wrong-answer img{display:block;max-width:100%;max-height:120px;width:auto;height:auto;margin-top:6px;border-radius:8px;border:1px solid var(--panel-border)}
@@ -135,8 +135,8 @@ img{max-width:100%;height:auto}
 @media(min-width:1024px){
   .app{padding-top:28px}
   .question-card{padding:56px 40px}
-  .quiz-picture{max-height:52vh}
-  .answer-picture{max-height:40vh}
+  .quiz-picture{max-height:68vh}
+  .answer-picture{max-height:52vh}
   .abbrev{font-size:clamp(48px,7vw,88px)}
 }
 @media(min-width:1440px){

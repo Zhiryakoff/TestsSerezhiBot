@@ -1,4 +1,4 @@
-const CACHE='obshaya-taktika-v6';
+const CACHE='obshaya-taktika-v7';
 const CORE=['./','./index.html','./style.css','./app.js','./bg.js','./data.js','./picture_data.js','./manifest.json','./telegram.js'];
 const PICTURES=Array.from({length:168},(_,i)=>`./assets/pictures/${i+1}.jpg`);
 const ANSWERS=Array.from({length:168},(_,i)=>`./assets/answers/${i+1}-1.jpg`);
