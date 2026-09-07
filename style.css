@@ -50,7 +50,7 @@ img{max-width:100%;height:auto}
 .btn-primary:hover{box-shadow:0 0 18px rgba(255,255,255,.18),0 8px 22px rgba(0,0,0,.55)}
 .btn-picture{background:linear-gradient(180deg,#17171b,#0c0c0f);border-color:#2f2f36}
 .btn-success{background:linear-gradient(180deg,#15201a,#0d130f);border-color:#204a33;color:#c8f7dc}
-.btn-exam{background:linear-gradient(180deg,#1c161f,#100c12);border-color:#3a2a40;color:#eadcff;width:min(100%,720px);margin:16px auto 0}
+.btn-exam{display:block;background:linear-gradient(180deg,#1c161f,#100c12);border-color:#3a2a40;color:#eadcff;width:min(100%,720px);margin:16px auto 0}
 .btn-secondary{background:linear-gradient(180deg,#151517,#0b0b0d);border-color:#2a2a2f;color:#c9c9ce}
 .btn-danger{background:linear-gradient(180deg,#1f1213,#120a0a);border-color:#4a2020;color:#ffb4b4;font-size:15px;min-height:48px;margin-top:10px}
 .btn-warning{background:linear-gradient(180deg,#201a10,#130f09);border-color:#4a3a1a;color:#ffd98a}
@@ -109,6 +109,10 @@ img{max-width:100%;height:auto}
   .answer-buttons{max-width:520px;margin:14px auto 0}
   .quiz-meta{font-size:15px}
 }
+/* Category pickers (abbreviations / pictures + "Экзамен") always read better
+   as one centered column of equal-width buttons, even on wide screens —
+   a 2-column grid leaves an odd button stranded on the left. */
+#categoryButtons,#pictureButtons{grid-template-columns:1fr}
 @media(max-width:480px){
   .app{padding-left:12px;padding-right:12px}
   .hero{padding-top:28px}
@@ -119,11 +123,11 @@ img{max-width:100%;height:auto}
   .btn-danger{margin-top:6px}
 }
 
-.category-home{width:min(100%,720px);margin:14px auto 0}
+.category-home{display:block;width:min(100%,720px);margin:14px auto 0}
 .picture-card{padding:clamp(12px,3vh,28px) 10px}
-.quiz-picture{display:block;width:100%;max-width:100%;max-height:60vh;height:auto;margin:14px auto 0;object-fit:contain;border-radius:12px;border:1px solid var(--panel-border)}
+.quiz-picture{display:block;width:70%;max-width:100%;max-height:42vh;height:auto;margin:14px auto 0;object-fit:contain;border-radius:12px;border:1px solid var(--panel-border)}
 .correct-label{color:var(--muted);font-size:13px;font-weight:800;margin-bottom:10px}
-.answer-picture{display:block;width:100%;max-width:100%;max-height:42vh;height:auto;margin:4px auto 8px;border-radius:10px;border:1px solid var(--panel-border)}
+.answer-picture{display:block;width:70%;max-width:100%;max-height:30vh;height:auto;margin:4px auto 8px;border-radius:10px;border:1px solid var(--panel-border)}
 .picture-wrong-item>img{display:block;max-width:100%;max-height:150px;width:auto;height:auto;margin:10px 0;border-radius:8px;border:1px solid var(--panel-border)}
 .wrong-answer{margin-top:8px;color:var(--muted);font-size:13px;font-weight:700}
 .wrong-answer img{display:block;max-width:100%;max-height:120px;width:auto;height:auto;margin-top:6px;border-radius:8px;border:1px solid var(--panel-border)}
@@ -135,8 +139,8 @@ img{max-width:100%;height:auto}
 @media(min-width:1024px){
   .app{padding-top:28px}
   .question-card{padding:56px 40px}
-  .quiz-picture{max-height:68vh}
-  .answer-picture{max-height:52vh}
+  .quiz-picture{max-height:48vh}
+  .answer-picture{max-height:36vh}
   .abbrev{font-size:clamp(48px,7vw,88px)}
 }
 @media(min-width:1440px){
